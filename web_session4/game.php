@@ -5,9 +5,9 @@
 		var $y = -1;
 		var $type = 0;
 
-		function __constructor($x, $y) {
-			this.$x = $x;
-			this.$y = $y;
+		function __construct($x, $y) {
+			$this->x = $x;
+			$this->y = $y;
 		}
 
 	}
@@ -19,10 +19,11 @@
 	}
 
 	function getAllFigures($yourId, $friendId) {
-		$figures = array();
+		$figures = array("yours" => array(), "friends" => array());
 		
 		for ($i=0;$i<10;$i++) {
-			array_push($figures, new Figure(0,0));
+			array_push($figures["yours"],   new Figure(0,0));
+			array_push($figures["friends"], new Figure(0,0));
 		}
 
 		renderJSON($figures);
