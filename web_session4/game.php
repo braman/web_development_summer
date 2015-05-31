@@ -12,6 +12,31 @@
 
 	}
 	
+	class Game {
+		var $figures = array();
+		var $yourId;
+		var $friendId;
+
+		function __construct($yourId, $friendId) {
+			$this->yourId = $yourId;
+			$this->friendId = $friendId;
+			$this->loadGame();
+		}
+
+		function loadGame() {
+			$fname = $yourId . "-" . $friendId . ".txt";
+
+			$contents = get_file_contents($fname);
+			$this->figures = json_decode($contents);
+		}
+
+
+		function makeMove($x1, $y1, $x2, $y2) {
+				
+		}
+	}
+
+
 	function renderJSON($obj) {
 		header("Content-Type: application/json");
 		header("Access-Control-Allow-Origin: *");
@@ -28,6 +53,8 @@
 
 		renderJSON($figures);
 	}
+
+
 	
 	
 	$action = $_GET['action'];
